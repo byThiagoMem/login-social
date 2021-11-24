@@ -10,13 +10,18 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<!-- TODO Replace this value: -->
-				<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
 				<string>com.googleusercontent.apps.82670864131-n6fdbt5rvel9vonkf1mnnv6r6f94a6vn</string>
+				<string>fb330780378414906</string>
 			</array>
 		</dict>
 	</array>
 	<!-- End of the Google Sign-in Section -->
+	<key>FacebookAppID</key>
+	<string>330780378414906</string>
+	<key>FacebookClientToken</key>
+	<string>2d909c5c9d25aa615abc3ea4e5780a15</string>
+	<key>FacebookDisplayName</key>
+	<string>Social Login</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

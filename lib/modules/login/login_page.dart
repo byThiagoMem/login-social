@@ -15,12 +15,12 @@ class LoginPage extends GetView<LoginController> {
           children: [
             SocialButton(
               socialButtomType: SocialButtomType.google,
-              onTap: () => controller.login(),
+              onTap: () => controller.loginWithGoogle(),
             ),
             const SizedBox(height: 20),
             SocialButton(
               socialButtomType: SocialButtomType.facebook,
-              onTap: () {},
+              onTap: () => controller.loginWithFacebook(),
             ),
           ],
         ),

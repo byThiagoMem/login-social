@@ -12,6 +12,8 @@ mixin LoaderMixin on GetxController {
           ),
           barrierDismissible: false,
         );
+      } else {
+        await Get.dialog(Container());
       }
     });
   }

@@ -3,7 +3,7 @@ import 'package:login_social/application/ui/loader/loader_mixin.dart';
 import 'package:login_social/application/ui/messages/messages_mixin.dart';
 import 'package:login_social/modules/login/login_controller.dart';
 import 'package:login_social/modules/models/user_model.dart';
-import 'package:login_social/services/login_service.dart';
+import 'package:login_social/services/login/login_service.dart';
 
 class HomeController extends GetxController with LoaderMixin, MessagesMixin {
   final LoginService _loginService;

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:login_social/application/bindings/application_binginds.dart';
+import 'package:login_social/modules/fipe/fipe_module.dart';
 import 'package:login_social/modules/home/home_module.dart';
 import 'package:login_social/modules/login/login_module.dart';
 import 'package:login_social/modules/login/login_page.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         ...LoginModule().routers,
         ...HomeModule().routers,
+        ...FipeModule().routers,
       ],
       title: 'Flutter Social Login',
       theme: ThemeData(

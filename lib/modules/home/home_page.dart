@@ -29,15 +29,15 @@ class HomePage extends GetView<HomeController> {
           children: [
             CustomCard(
               consultType: ConsultType.car,
-              onTap: () {},
+              onTap: () => Get.toNamed('/fipe', arguments: ConsultType.car),
             ),
             CustomCard(
               consultType: ConsultType.motorcycle,
-              onTap: () {},
+              onTap: () => Get.toNamed('/fipe', arguments: ConsultType.motorcycle),
             ),
             CustomCard(
               consultType: ConsultType.truck,
-              onTap: () {},
+              onTap: () => Get.toNamed('/fipe', arguments: ConsultType.truck),
             ),
           ],
         ),

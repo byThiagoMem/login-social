@@ -3,7 +3,7 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:login_social/modules/models/user_model.dart';
 
-import 'login/login_repository.dart';
+import 'login_repository.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
   @override

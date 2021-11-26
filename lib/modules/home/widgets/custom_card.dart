@@ -7,6 +7,18 @@ class CustomCard extends StatelessWidget {
   final VoidCallback onTap;
   const CustomCard({Key? key, required this.consultType, required this.onTap}) : super(key: key);
 
+  String get title => consultType == ConsultType.car
+      ? 'Consulta de carros e utilitários pequenos'
+      : consultType == ConsultType.motorcycle
+          ? 'Consulta de motos'
+          : 'Consulta de caminhões e micro-ônibus';
+
+  String get image => consultType == ConsultType.car
+      ? 'assets/images/carro.png'
+      : consultType == ConsultType.motorcycle
+          ? 'assets/images/moto.png'
+          : 'assets/images/caminhao.png';
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -30,22 +42,14 @@ class CustomCard extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: Image.asset(
-                  consultType == ConsultType.car
-                      ? 'assets/images/carro.png'
-                      : consultType == ConsultType.motorcycle
-                          ? 'assets/images/moto.png'
-                          : 'assets/images/caminhao.png',
+                  image,
                   color: Colors.black,
                   fit: BoxFit.contain,
                 ),
               ),
               Expanded(
                 child: Text(
-                  consultType == ConsultType.car
-                      ? 'Consulta de carro e utilitários pequenos'
-                      : consultType == ConsultType.motorcycle
-                          ? 'Consulta de motos'
-                          : 'Consulta de caminhões e micro-ônibus',
+                  title,
                   style: const TextStyle(
                     fontSize: 18,
                   ),

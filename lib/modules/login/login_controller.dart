@@ -1,6 +1,6 @@
 import 'package:login_social/application/ui/loader/loader_mixin.dart';
 import 'package:login_social/application/ui/messages/messages_mixin.dart';
-import 'package:login_social/services/login_service.dart';
+import 'package:login_social/services/login/login_service.dart';
 import 'package:get/get.dart';
 
 enum SOCIALLOGINTYPE { email, google, facebok }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:login_social/modules/home/widgets/custom_app_bar.dart';
+import 'package:login_social/modules/home/widgets/custom_card.dart';
 
 import 'home_controller.dart';
 
@@ -10,36 +12,36 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Obx(() {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      appBar: CustomAppBar(
+        controller: controller,
+        onTap: controller.logout,
+      ),
+      body: Container(
+        width: Get.width,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
-              width: 100,
-              height: 100,
-              child: ClipOval(
-                clipBehavior: Clip.antiAlias,
-                child: Image.network(
-                  controller.userData.value?.imageUrl ?? 'https://doutoresdoexcel.com.br/wp-content/uploads/2021/07/Loading-PNG.gif',
-                  fit: BoxFit.cover,
-                ),
-              ),
+            CustomCard(
+              consultType: ConsultType.car,
+              onTap: () {},
             ),
-            Text(
-              controller.userData.value?.name ?? '',
-              style: const TextStyle(
-                fontSize: 18,
-                color: Colors.white,
-              ),
+            CustomCard(
+              consultType: ConsultType.motorcycle,
+              onTap: () {},
             ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: controller.logoutWithGoogle,
-              child: const Text('Logout'),
+            CustomCard(
+              consultType: ConsultType.truck,
+              onTap: () {},
             ),
           ],
-        );
-      })),
+        ),
+      ),
     );
   }
 }

@@ -22,7 +22,7 @@ class HomeController extends GetxController with LoaderMixin, MessagesMixin {
     userData.value = Get.arguments;
   }
 
-  Future<void> logoutWithGoogle() async {
+  Future<void> _logoutWithGoogle() async {
     try {
       await _loginService.logoutWithGoogle();
       Get.offAllNamed('/login');
@@ -31,7 +31,7 @@ class HomeController extends GetxController with LoaderMixin, MessagesMixin {
     }
   }
 
-  Future<void> logoutWithFacebook() async {
+  Future<void> _logoutWithFacebook() async {
     try {
       await _loginService.logoutWithFacebook();
       Get.offAllNamed('/login');
@@ -41,10 +41,12 @@ class HomeController extends GetxController with LoaderMixin, MessagesMixin {
   }
 
   Future<void> logout() async {
-    if (socialLoginType.value == SOCIALLOGINTYPE.google.toString()) {
-      await logoutWithGoogle();
+    if (socialLoginType.value == SOCIALLOGINTYPE.email.toString()) {
+      Get.offAllNamed('/login');
+    } else if (socialLoginType.value == SOCIALLOGINTYPE.google.toString()) {
+      await _logoutWithGoogle();
     } else {
-      await logoutWithFacebook();
+      await _logoutWithFacebook();
     }
   }
 }

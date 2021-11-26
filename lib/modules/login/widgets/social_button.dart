@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum SocialButtomType { google, facebook }
+enum SocialButtomType { email, google, facebook }
 
 class SocialButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -16,8 +16,8 @@ class SocialButton extends StatelessWidget {
         height: 64,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.black),
-          color: Colors.grey[400],
+          border: Border.all(color: Colors.grey),
+          color: const Color(0xFF090D68).withOpacity(.1),
         ),
         child: Row(
           children: [
@@ -26,21 +26,33 @@ class SocialButton extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
-                  socialButtomType == SocialButtomType.google ? 'assets/images/google_logo.png' : 'assets/images/facebook_logo.png',
-                  height: 25,
-                  width: 25,
-                  fit: BoxFit.cover,
+                  socialButtomType == SocialButtomType.email
+                      ? 'assets/images/email_logo.png'
+                      : socialButtomType == SocialButtomType.google
+                          ? 'assets/images/google_logo.png'
+                          : socialButtomType == SocialButtomType.facebook
+                              ? 'assets/images/facebook_logo.png'
+                              : 'assets/images/apple_logo.png',
+                  height: 28,
+                  width: 28,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
-            Container(height: 64, width: 1, color: Colors.black),
+            Container(height: 64, width: 1, color: Colors.grey),
             Expanded(
               child: Text(
-                socialButtomType == SocialButtomType.google ? 'Entrar com google' : 'Entrar com facebook',
+                socialButtomType == SocialButtomType.email
+                    ? 'Continuar sem login'
+                    : socialButtomType == SocialButtomType.google
+                        ? 'Continuar com o Google'
+                        : socialButtomType == SocialButtomType.facebook
+                            ? 'Continuar com o Facebook'
+                            : 'Continuar com a Apple',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 16,
-                  color: Colors.black,
+                  color: Color(0xFFe46b10),
                 ),
               ),
             )

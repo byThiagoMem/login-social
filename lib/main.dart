@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Social Login',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.grey[800],
       ),
       home: const LoginPage(),
     );

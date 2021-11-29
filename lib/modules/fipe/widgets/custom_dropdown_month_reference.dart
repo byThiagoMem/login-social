@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:login_social/modules/fipe/fipe_controller.dart';
+import 'package:login_social/modules/fipe/widgets/container_drop_down.dart';
+import 'package:login_social/modules/fipe/widgets/custom_bottom_sheet.dart';
 
 class CustomDropdownMonthReference extends GetView<FipeController> {
   final String title;
-  final Future<Object?> futureBuilder;
   final List<dynamic> data;
-  const CustomDropdownMonthReference({required this.data, required this.title, required this.futureBuilder, Key? key}) : super(key: key);
+  final DropDownChanged dropDownChanged;
+  final String dropDownValueSelected;
+  final bool enable;
+  const CustomDropdownMonthReference({
+    required this.data,
+    required this.title,
+    required this.dropDownChanged,
+    required this.dropDownValueSelected,
+    required this.enable,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -22,50 +33,22 @@ class CustomDropdownMonthReference extends GetView<FipeController> {
             ),
           ),
           const SizedBox(height: 8),
-          FutureBuilder(
-            future: futureBuilder,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (data.isNotEmpty) {
-                return Column(
-                  children: [
-                    Center(
-                      child: SizedBox(
-                        child: DropdownButtonFormField<String>(
-                          alignment: Alignment.bottomLeft,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                          ),
-                          menuMaxHeight: 300,
-                          value: data.first.month,
-                          onChanged: (_) {},
-                          items: data.map<DropdownMenuItem<String>>(
-                            (e) {
-                              return DropdownMenuItem<String>(
-                                onTap: () => controller.monthReferenceSelected = e.cod,
-                                value: e.month,
-                                child: Text(
-                                  e.month,
-                                ),
-                              );
-                            },
-                          ).toList(),
-                        ),
-                      ),
-                    )
-                  ],
-                );
-              } else if (snapshot.hasError) {
-                return const Center(
-                  child: Text('Erro ao carregar dados'),
-                );
-              }
-              return const SizedBox();
-            },
-          ),
+          InkWell(
+            child: ContainerDropDown(
+              dropDownValueSelected: dropDownValueSelected,
+              enable: enable,
+            ),
+            onTap: enable
+                ? () {
+                    CustomBottomSheet.showCustomBottomSheet(
+                      context: context,
+                      data: data,
+                      controller: controller,
+                      dropDownChanged: dropDownChanged,
+                    );
+                  }
+                : null,
+          )
         ],
       ),
     );

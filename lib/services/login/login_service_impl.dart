@@ -1,4 +1,4 @@
-import 'package:login_social/modules/models/user_model.dart';
+import 'package:login_social/models/user_model.dart';
 import 'package:login_social/repositories/login/login_repository.dart';
 
 import 'login_service.dart';

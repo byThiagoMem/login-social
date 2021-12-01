@@ -16,8 +16,8 @@ class LoginPage extends GetView<LoginController> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xff191b91),
-              Color(0xffe46b10),
+              Color(0xffffffff),
+              Color(0xff7d7d7d),
             ],
             begin: Alignment.bottomLeft,
             end: Alignment.topRight,

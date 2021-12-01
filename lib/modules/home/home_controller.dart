@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:login_social/application/ui/loader/loader_mixin.dart';
 import 'package:login_social/application/ui/messages/messages_mixin.dart';
-import 'package:login_social/modules/login/login_controller.dart';
 import 'package:login_social/models/user_model.dart';
+import 'package:login_social/modules/login/login_controller.dart';
 import 'package:login_social/services/login/login_service.dart';
 
 class HomeController extends GetxController with LoaderMixin, MessagesMixin {
@@ -22,7 +22,7 @@ class HomeController extends GetxController with LoaderMixin, MessagesMixin {
     userData.value = Get.arguments;
   }
 
-  Future<void> _logoutWithGoogle() async {
+  Future<void> logoutWithGoogle() async {
     try {
       await _loginService.logoutWithGoogle();
       Get.offAllNamed('/login');
@@ -31,7 +31,7 @@ class HomeController extends GetxController with LoaderMixin, MessagesMixin {
     }
   }
 
-  Future<void> _logoutWithFacebook() async {
+  Future<void> logoutWithFacebook() async {
     try {
       await _loginService.logoutWithFacebook();
       Get.offAllNamed('/login');
@@ -41,12 +41,10 @@ class HomeController extends GetxController with LoaderMixin, MessagesMixin {
   }
 
   Future<void> logout() async {
-    if (socialLoginType.value == SOCIALLOGINTYPE.email.toString()) {
-      Get.offAllNamed('/login');
-    } else if (socialLoginType.value == SOCIALLOGINTYPE.google.toString()) {
-      await _logoutWithGoogle();
+    if (socialLoginType.value == SOCIALLOGINTYPE.google.toString()) {
+      await logoutWithGoogle();
     } else {
-      await _logoutWithFacebook();
+      await logoutWithFacebook();
     }
   }
 }

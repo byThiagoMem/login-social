@@ -7,6 +7,22 @@ class SocialButton extends StatelessWidget {
   final SocialButtomType socialButtomType;
   const SocialButton({Key? key, required this.onTap, required this.socialButtomType}) : super(key: key);
 
+  String get image => socialButtomType == SocialButtomType.email
+      ? 'assets/images/email_logo.png'
+      : socialButtomType == SocialButtomType.google
+          ? 'assets/images/google_logo.png'
+          : socialButtomType == SocialButtomType.facebook
+              ? 'assets/images/facebook_logo.png'
+              : 'assets/images/apple_logo.png';
+
+  String get title => socialButtomType == SocialButtomType.email
+      ? 'Continuar sem login'
+      : socialButtomType == SocialButtomType.google
+          ? 'Continuar com o Google'
+          : socialButtomType == SocialButtomType.facebook
+              ? 'Continuar com o Facebook'
+              : 'Continuar com a Apple';
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -16,7 +32,7 @@ class SocialButton extends StatelessWidget {
         height: 64,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.grey),
+          border: Border.all(color: Colors.black54),
           color: const Color(0xFF090D68).withOpacity(.1),
         ),
         child: Row(
@@ -26,33 +42,21 @@ class SocialButton extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
-                  socialButtomType == SocialButtomType.email
-                      ? 'assets/images/email_logo.png'
-                      : socialButtomType == SocialButtomType.google
-                          ? 'assets/images/google_logo.png'
-                          : socialButtomType == SocialButtomType.facebook
-                              ? 'assets/images/facebook_logo.png'
-                              : 'assets/images/apple_logo.png',
+                  image,
                   height: 28,
                   width: 28,
                   fit: BoxFit.contain,
                 ),
               ),
             ),
-            Container(height: 64, width: 1, color: Colors.grey),
+            Container(height: 64, width: 1, color: Colors.black54),
             Expanded(
               child: Text(
-                socialButtomType == SocialButtomType.email
-                    ? 'Continuar sem login'
-                    : socialButtomType == SocialButtomType.google
-                        ? 'Continuar com o Google'
-                        : socialButtomType == SocialButtomType.facebook
-                            ? 'Continuar com o Facebook'
-                            : 'Continuar com a Apple',
+                title,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 16,
-                  color: Color(0xFFe46b10),
+                  color: Colors.black,
                 ),
               ),
             )

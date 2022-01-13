@@ -26,15 +26,6 @@ class LoginPage extends GetView<LoginController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            SizedBox(
-              child: Image.asset('assets/images/fipe_logo.png'),
-              height: Get.size.width * .4,
-            ),
-            SizedBox(height: Get.size.height * .30),
-            SocialButton(
-              socialButtomType: SocialButtomType.email,
-              onTap: () => controller.loginWithEmail(),
-            ),
             SizedBox(height: Get.size.height * .02),
             SocialButton(
               socialButtomType: SocialButtomType.google,
